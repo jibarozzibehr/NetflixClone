@@ -32,12 +32,12 @@ const MovieDetailsScreen = () => {
             <FlatList
                 data={currentSeason.episodes.items}
                 renderItem= {({item}) => <EpisodeItem episode={item} />}
-                style={{marginBottom: 100}}
+                style={{marginBottom: 250}}
                 ListHeaderComponent={(
                     <View style={{padding: 12}}>
                         <Text style={styles.title}>{movie.title}</Text>
 
-                        <View style={{flexDirection: "row"}}>
+                        <View style={{flexDirection: "row", alignItems: "center"}}>
                             <Text style={styles.match}>98% match</Text>
                             <Text style={styles.year}>{movie.year}</Text>
 
@@ -65,7 +65,8 @@ const MovieDetailsScreen = () => {
                             style={styles.downloadButton}
                         >
                             <Text style={styles.downloadButtonText}>
-                                <AntDesign name="download" size={16} color="white" style={{marginRight: 5}}/>
+                                <AntDesign name="download" size={16} color="white" />
+                                {' '}
                                 Download
                             </Text>
                         </Pressable>
@@ -93,7 +94,7 @@ const MovieDetailsScreen = () => {
                         </View>
 
                         <Picker
-                            style={{marginTop: 20, width: 100, color: "white", backgroundColor: "black", borderStyle: "solid", borderColor: "black"}}
+                            style={{marginTop: 20, width: 150, color: "white", backgroundColor: "black", borderStyle: "solid", borderColor: "black"}}
                             selectedValue={currentSeason.name}
                             onValueChange={(itemValue, itemIndex) => {
                                 setCurrentSeason(movie.seasons.items[itemIndex]);

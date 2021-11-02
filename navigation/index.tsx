@@ -15,7 +15,8 @@ import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/HomeScreen';
 import MovieDetailsScreen from '../screens/MovieDetailsScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
-import { HomeStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
+import NotFoundScreen from '../screens/NotFoundScreen';
+import { RootStackParamList, BottomTabParamList, RootTabScreenProps, HomeParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
 import { AntDesign, MaterialIcons, Ionicons } from '@expo/vector-icons';
@@ -34,9 +35,25 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
  * A root stack navigator is often used for displaying modals on top of all other content.
  * https://reactnavigation.org/docs/modal
  */
-const HomeStack = createNativeStackNavigator<HomeStackParamList>();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Root" component={BottomTabNavigator} />
+      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+    </Stack.Navigator>
+  );
+}
+
+
+
+
+
+
+const HomeStack = createNativeStackNavigator<HomeParamList>();
+
+function TabOneNavigator() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
@@ -54,11 +71,12 @@ function RootNavigator() {
   );
 }
 
+
 /**
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
-const BottomTab = createBottomTabNavigator<RootTabParamList>();
+const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 function BottomTabNavigator() {
   const colorScheme = useColorScheme();
@@ -68,11 +86,12 @@ function BottomTabNavigator() {
       initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
-      }}>
+      }}
+    >
       
       <BottomTab.Screen
         name="Home"
-        component={HomeScreen}
+        component={TabOneNavigator}
         options={{
           tabBarIcon: ({color}) => <AntDesign name="home" size={24} color={color} />,
           headerShown: false

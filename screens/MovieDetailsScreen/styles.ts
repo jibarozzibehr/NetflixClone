@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
 
     year: {
         color: "#757575",
+        marginRight: 5,
     },
 
     ageContainer: {
@@ -28,6 +29,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderRadius: 2,
         paddingHorizontal: 3,
+        marginRight: 5,
     },
 
     age: {
