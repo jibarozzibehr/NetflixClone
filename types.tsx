@@ -15,6 +15,7 @@ declare global {
 
 export type HomeStackParamList = {
   HomeScreen: undefined;
+  MovieDetailsScreen: undefined;
   /*
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Modal: undefined;

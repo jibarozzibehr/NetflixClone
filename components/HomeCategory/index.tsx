@@ -2,7 +2,7 @@ import * as React from 'react';
 
 
 import { Image, FlatList } from "react-native";
-import { Text } from '../../components/Themed';
+import { Text, View } from '../../components/Themed';
 
 import styles from './styles';
 
@@ -21,7 +21,7 @@ interface HomeCategoryProps {
 const HomeCategory = (props: HomeCategoryProps) => {
     const { category } = props;
     return (
-        <>
+        <View style={styles.container}>
             <Text style={styles.title}>{category.title}</Text>
             <FlatList
                 data={category.movies}
@@ -29,8 +29,9 @@ const HomeCategory = (props: HomeCategoryProps) => {
                 <Image style={styles.image} source={{uri: item.poster}} />
                 )}
                 horizontal
+                showsHorizontalScrollIndicator={false}
             />
-        </>
+        </View>
     );
 }
 
