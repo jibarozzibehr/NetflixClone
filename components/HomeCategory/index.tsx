@@ -25,10 +25,10 @@ const HomeCategory = (props: HomeCategoryProps) => {
     
     const navigation = useNavigation();
 
-    const onMoviePress = (movie) => {
+    const onMoviePress = (movie: { id: string; poster?: string; }) => {
         navigation.navigate('MovieDetailsScreen', { id: movie.id });
     }
-    
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{category.title}</Text>
